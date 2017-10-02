@@ -168,6 +168,8 @@ class Sipgate(BaseHTTPRequestHandler):
                         doc = Document()
                         response = doc.createElement('Response')
                         gather = doc.createElement('Gather')
+                        gather.setAttribute('onAnswer', BASEURL)
+                        gather.setAttribute('onHangup', BASEURL)
                         gather.setAttribute('onData', BASEURL)
                         gather.setAttribute('onHangup', BASEURL)
                         gather.setAttribute('maxDigits', "6")
