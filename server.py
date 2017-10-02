@@ -255,8 +255,9 @@ class Sipgate(BaseHTTPRequestHandler):
             pass
 
 def main(args):
-    global HTTPD, CREDENTIALS
+    global HTTPD, CREDENTIALS, BASEURL
     server_address = (LISTENIP, LISTENPORT)
+    BASEURL = ("//%s@" % CREDENTIALS).join(BASEURL.split("//"))
     CREDENTIALS = base64.b64encode(bytes(CREDENTIALS, "utf-8"))
     if not SSL_CERTIFICATE:
         HTTPD = HTTPServer(server_address, Sipgate)
